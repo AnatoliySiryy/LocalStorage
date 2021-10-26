@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        
+        <link rel="stylesheet" id="theme" href="./green.css">
+    </head>
+    <body>
+        <input type="radio" name="theme_r" value="green" onclick="getTheme()">
+        <input type="radio" name="theme_r" value="red"  onclick="getTheme()">
+    </body>
+    <script>
+        let themeId = "green";
+        window.onload = function getTheme() {
+            let radios = document.getElementsByName("theme_r");
+            for (var i = 0; i < radios.length; i++) {
+                if (radios[i].value == localStorage.getItem("theme_id")) {
+                   radios[i].checked = true;
+                    
+                    break;
+                  }
+             }
+            themeId = localStorage.getItem("theme_id");
+             console.log(themeId);
+            if (themeId == 'green'){
+                document.getElementById("theme").href = '/green.css';
+            }
+            else { document.getElementById("theme").href = '/red.css';}
+        } 
+        function getTheme() {
+            
+            if(localStorage.getItem("theme_id" !== '')) {  themeId = localStorage.getItem("theme_id", themeId); }
+           
+            let radios = document.getElementsByName("theme_r");
+            for (var i = 0; i < radios.length; i++) {
+                if (radios[i].checked) {
+                    themeId = (radios[i].value);
+                    localStorage.setItem("theme_id", themeId);
+                    break;
+                  }
+             }
+             console.log(themeId);
+            if (themeId == 'green'){
+                document.getElementById("theme").href = '/green.css';
+            }
+            else { document.getElementById("theme").href = '/red.css';}
+        } 
+    </script>
+</html>
